@@ -1,0 +1,80 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+.outer-container {
+  width: 90vw;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+header {
+  margin: 2rem 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+
+  label {
+    padding: 1rem 0;
+    font-size: 1.3rem;
+  }
+
+  input {
+    width: 65%;
+    margin: 0 auto;
+    padding: 0.4rem;
+    border: 2px solid blue;
+    border-radius: 7px;
+    outline: none;
+    font-size: 1.1rem;
+  }
+
+  button {
+    width: 30%;
+    max-width: 140px;
+    margin: 3rem auto;
+    padding: 0.8rem 0;
+    border: 2px solid blue;
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: blue;
+      color: white;
+    }
+  }
+}
+
+.result {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: show 0.4s;
+}
+
+@keyframes show {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
