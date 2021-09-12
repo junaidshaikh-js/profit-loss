@@ -10,6 +10,43 @@
     <title>Profit - Loss</title>
   </head>
   <body>
+    <div class="outer-container">
+      <header>
+        <h1>Stock Profit and Loss Calculator</h1>
+      </header>
+      <main>
+        <form>
+          <label for="initial-price">Initial Price</label>
+          <input
+            type="number"
+            id="initial-price"
+            min="0"
+            placeholder="Initial Price"
+            required
+          />
+
+          <label for="qt">Quantity of Stocks</label>
+          <input
+            type="number"
+            id="qt"
+            min="0"
+            placeholder="Number of Stocks"
+            required
+          />
+
+          <label for="current-price">Current Price</label>
+          <input
+            type="number"
+            id="current-price"
+            min="0"
+            placeholder="Current Price"
+            required
+          />
+
+          <button type="submit">Tell Me!</button>
+        </form>
+      </main>
+    </div>
     <!-- javaScript -->
     <script src="./js/index.js"></script>
   </body>
