@@ -17,7 +17,7 @@ function profitOrLoss(costPrice, sellingPrice) {
     let profitPercentage = ((profit / costPrice) * 100).toFixed(2);
 
     if (profit == 0) {
-      return "no pain no gain";
+      return ["no pain no gain", null];
     }
 
     return [
@@ -39,6 +39,8 @@ function profitOrLoss(costPrice, sellingPrice) {
 function flush(message, isProfit) {
   if (isProfit) {
     body.style.backgroundColor = "#1ec41e";
+  } else if (isProfit == null) {
+    body.style.backgroundColor = "";
   } else {
     body.style.backgroundColor = "#ff5353";
   }
