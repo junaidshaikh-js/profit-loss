@@ -6,6 +6,10 @@ const currentPriceInput = document.querySelector("#current-price");
 
 const form = document.querySelector("form");
 
+const body = document.querySelector("body");
+
+const output = document.querySelector(".output");
+
 function profitOrLoss(costPrice, sellingPrice) {
   if (sellingPrice >= costPrice) {
     // calculate Profit
@@ -16,28 +20,31 @@ function profitOrLoss(costPrice, sellingPrice) {
       return "no pain no gain";
     }
 
-    return `Hey! You gained a profit of Rs. ${profit} and profit percentage is ${profitPercentage}`;
+    return [
+      `Hey! You gained a profit of Rs. ${profit} and profit percentage is ${profitPercentage}`,
+      true,
+    ];
   } else {
     // calculate loss
     let loss = costPrice - sellingPrice;
     let lossPercentage = ((loss / costPrice) * 100).toFixed(2);
 
-    return `Hey! Sadly, you are in loss of Rs. ${loss} and loss percentage is ${lossPercentage}`;
+    return [
+      `Hey! Sadly, you are in loss of Rs. ${loss} and loss percentage is ${lossPercentage}`,
+      false,
+    ];
   }
 }
 
-function flush(output) {
-  let para = document.createElement("p");
+function flush(message, isProfit) {
+  if (isProfit) {
+    body.style.backgroundColor = "#1ec41e";
+  } else {
+    body.style.backgroundColor = "#ff5353";
+  }
 
-  para.innerHTML = output;
-
-  para.setAttribute("class", "result");
-
-  form.after(para);
-
-  setTimeout(() => {
-    para.remove();
-  }, 5000);
+  output.setAttribute("class", "result");
+  output.innerHTML = message;
 }
 
 function calculateProfitLoss(e) {
@@ -50,9 +57,9 @@ function calculateProfitLoss(e) {
   let costPrice = initialPrice * quantity;
   let sellingPrice = currentPrice * quantity;
 
-  let output = profitOrLoss(costPrice, sellingPrice);
+  let [message, isProfit] = profitOrLoss(costPrice, sellingPrice);
 
-  flush(output);
+  flush(message, isProfit);
 }
 
 form.addEventListener("submit", calculateProfitLoss);
